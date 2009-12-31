@@ -1,0 +1,9 @@
+
+<h3>Users(<%= link_to "Add", :action => "new" %>)</h3>
+
+<ul>
+<% User.find(:all).sort {|a,b| a.login <=> b.login }.each do |user| %>
+  <li><%= user.login %>
+    <%= link_to "Edit", :action => "edit", :id => user.id %>
+  </li>
+<% end %>

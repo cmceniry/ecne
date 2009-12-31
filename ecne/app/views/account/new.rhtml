@@ -1,0 +1,12 @@
+<h3>Create User</h3>
+
+<%= error_messages_for :user %>
+<% form_tag do %>
+
+<%= render :partial => "user_form" %>
+
+<%= submit_tag "Create User" %>
+
+<% end %>
+
+<%= link_to "Cancel", :action => 'admin' %>

@@ -1,0 +1,15 @@
+<div class="my-tags">
+<h4>My Tags</h4>
+<% if @writer %>
+<%   current_user.tags.reject { |t| @password.tags.include?(t) }.sort { |a,b| a.name <=> b.name }.each do |t| %>
+  <div class="my-tag">
+    <%= link_to_remote add_tag_image_link,
+                       :url => { :action => "add_tag", 
+                                 :id => @password.id,
+                                 :tagid => t.id } %>
+    <%= t.name %>
+  </div>
+<%   end %>
+<% end %>
+</div>
+<div class="spacer">&nbsp;</div>

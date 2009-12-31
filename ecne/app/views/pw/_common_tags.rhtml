@@ -1,0 +1,15 @@
+<div class="common-tags">
+<h4>Common Tags</h4>
+<% if @writer %>
+<%   Tag.find(:all, :conditions => [ 'common = ?', '1' ]).reject { |t| @password.tags.include?(t) || current_user.tags.include?(t) }.sort { |a,b| a.name <=> b.name }.each do |t| %>
+  <div class="common-tag">
+    <%= link_to_remote add_tag_image_link,
+                       :url => { :action => "add_tag", 
+                                 :id => @password.id,
+                                 :tagid => t.id } %>
+    <%= t.name %>
+  </div>
+<%   end %>
+<% end %>
+</div>
+<div class="spacer">&nbsp;</div>

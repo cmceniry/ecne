@@ -1,0 +1,21 @@
+
+
+<table width="100%"><tr>
+<td><div class="search">
+    <% form_remote_tag :url => { :action => 'search' } do %>
+        <%= text_field_tag 'search_text' %><br/>
+        <%= check_box_tag 'search_inactive' %>Inactive?<br/>
+        <%= submit_tag 'Search' %>
+    <% end %>
+</div></td>
+
+<td><div class="new-password">
+    <% form_remote_tag :url => { :action => 'new' } do %>
+        <%= submit_tag 'New Password'%>
+    <% end %>
+</div></td>
+</tr></table>
+<div>
+  <%= link_to "Profile", :controller => "account", :action => "profile" %>
+  <%= link_to "Logout", :controller => "account", :action => "logout" %>
+</div>

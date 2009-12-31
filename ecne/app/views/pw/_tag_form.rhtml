@@ -1,0 +1,10 @@
+<% form_remote_tag :url  => { :action => "add_tag", :id => @password.id },
+                   :html => { :id => 'tag-form' } do %>
+  <%= text_field 'tag', 'name', :size => 25, :value => "" %><br/>
+  <%= submit_tag 'Tag' %>
+<% end %>
+
+<p class="tag-help">Permission tag examples:<ul class="tag-help">
+  <li>r:u:foo - read by user foo</li>
+  <li>w:g:bar - write by group bar</li>
+</ul></p>

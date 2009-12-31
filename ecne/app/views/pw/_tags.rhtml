@@ -1,0 +1,18 @@
+<div class="tags">
+<% @password.taggings.sort { |a,b| a.tag.name <=> b.tag.name }.each do |t| %>
+  <div class="tagging">
+    <%= @writer ? (link_to_remote del_tag_image_link, 
+                   :confirm => "Are you sure you want to remove \"#{t.tag.name}\" from \"#{@password.name}\"?",
+                   :url => { :action => "delete_tagging", :id => t.id }) : "" %><%= t.tag.name %>
+  </div>
+<% end %>
+</div>
+<div class="tag-form">
+<%= @writer ? render(:partial => "tag_form") : "" %>
+</div>
+<div class="spacer">&nbsp;</div>
+<% if @writer %>
+<%= render :partial => 'my_tags' %>
+<%= render :partial => 'common_tags' %>
+<div class="spacer">&nbsp;</div>
+<% end %>

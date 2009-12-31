@@ -1,0 +1,49 @@
+
+<h3>Welcome, <%= current_user.login %></h3>
+
+
+<table border=1 cellpadding=10>
+<tr>
+  <td colspan=2 align=center>
+    <%= link_to "Return to the safe...", :controller => :pw, :action => :index %>
+  </td>
+</tr>
+<tr valign=top>
+  <td>
+<h3>My Tags</h3>
+<%= @user.my_tags.sort { |a,b| a.tag.name <=> b.tag.name }.map do |mt|
+  link_to(image_tag("Crystal_Clear_action_button_cancel.png", :size => "16x16"), :action => :delete_my_tag, :id => mt.id) + mt.tag.name
+end.join("<br/>") %>
+
+<% form_tag :action => "add_my_tag" do %>
+
+<p><label for="tagname">My Tag</label><br/>
+<%= text_field :tag, :name %></p>
+
+<%= submit_tag "Add My Tag" %>
+
+<% end %>
+  </td>
+
+  <td>
+<h3>Change Password</h3>
+<% form_tag do %>
+<%= error_messages_for :user %>
+
+<!--[form:user]-->
+<p><label for="password">Password</label><br/>
+<%= password_field :user, :password %></p>
+
+<p><label for="password_confirmation">Confirm Password</label><br/>
+<%= password_field :user, :password_confirmation %></p>
+
+<%= submit_tag 'Change Password' %>
+<% end %>
+  </td>
+</tr>
+<tr>
+  <td colspan=2 align=center>
+    <%= link_to "Return to the safe...", :controller => :pw, :action => :index %>
+  </td>
+</tr>
+</table>

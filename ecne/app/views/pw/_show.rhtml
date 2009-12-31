@@ -1,0 +1,11 @@
+<div>
+  <div class="password-name"><h2><%= @password.name %></h2></div></td>
+  <div class="password-page">
+    <%= @writer ? (link_to_remote 'Change Password', :url => { :action => 'change_password', :id => @password.id }) + " |" : "" %>
+    <%= @writer ? (link_to_remote 'Edit', :url => { :action => 'edit', :id => @password.id }) + " |" : "" %>
+    <%= link_to_remote 'Password History', :url => { :action => 'showall', :id => @password.id } %>
+  </div>
+</div>
+<div class="password-value" id="password-value-<%= @password.id %>"><pre><%= @password.value %></pre></div>
+<div class="password-info">-- <%= @password.lastchangedby %> <em><%= @password.lastchanged %></em></div>
+<div id="password-tags" class="password-tags"><%= render :partial => 'tags' %></div>

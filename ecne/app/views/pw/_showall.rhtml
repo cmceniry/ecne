@@ -1,0 +1,16 @@
+<h1>Password History</h1>
+
+<div class="password-name"><h2><%= @password.name %></h2></div></td>
+
+<%= link_to_remote "Show", :url => { :action => 'show', :id => @password.id } %>
+
+<div class="all-password" id="all-password-<%= @password.id %>">
+<table>
+<% @password.password_entries.sort { |pea, peb| peb.cdate <=> pea.cdate }.each do |pe| %>
+    <tr><td>
+          <div class="password-value"><pre><%= pe.value %></pre></div>
+          <div class="password-info">-- <%= pe.cwho %> <em><%= pe.cdate %></em></div>
+    </td></tr>
+<% end %>
+</table>
+</div>

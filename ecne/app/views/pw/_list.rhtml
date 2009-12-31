@@ -1,0 +1,16 @@
+<div class="link-left">
+  <%= link_to_remote prev_image_link + ' Prev', :url => { :page => @password_pages.current.previous, :search_text => @search_text, :search_inactive => @search_inactive } if @password_pages.current.previous %>
+</div>
+<div class="link-right">
+  <%= link_to_remote 'Next ' + next_image_link, :url => { :page => @password_pages.current.next, :search_text => @search_text, :search_inactive => @search_inactive } if @password_pages.current.next %> 
+</div>
+<div class="spacer"></div>
+
+<table>
+<% for password in @passwords %>
+    <tr>
+        <td><%= password.can?(['r','w'], current_user.login) ? (link_to_remote password.name, :url => { :action => 'show', :id => password.id }) : (password.name) %></td>
+    </tr>
+<% end %>
+</table>
+
